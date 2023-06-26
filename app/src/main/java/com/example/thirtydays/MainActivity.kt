@@ -4,11 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -30,51 +35,78 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    PhotographyList()
                 }
             }
         }
     }
 }
 
-@Preview
+
 @Composable
-fun PhotographyCard() {
-    Card(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+fun PhotographyCard(dayCount: String, title: String) {
+    Card(modifier = Modifier
+        .fillMaxWidth()) {
         Column(modifier = Modifier.padding(8.dp)) {
-            Text(text = "Day 1")
-            Text(text = "Day 1")
+            Text(text = "Day " + dayCount)
+            Text(text = title)
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = null,
                 Modifier.fillMaxWidth()
             )
-            Text(text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+            Text(text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries ")
         }
+
     }
+
+
 }
 
+@Preview
+@Composable
+fun PhotographyCardPreview() {
+    ThirtyDaysTheme() {
+        PhotographyCard("1", "Spend 15 min")
+    }
+
+}
+
+@Preview
 @Composable
 fun PhotographyList() {
-    LazyColumn() {
+    LazyVerticalGrid(GridCells.Fixed(1), modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item {
-            PhotographyCard()
+            PhotographyCard("1","Spend 15 min")
+            Spacer(Modifier.size(8.dp))
         }
-    }
-}
+        item {
+            PhotographyCard("1", "Spend 15 min")
+            Spacer(Modifier.size(8.dp))
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        }
+        item {
+            PhotographyCard("1", "Spend 15 min")
+            Spacer(Modifier.size(8.dp))
+        }
+        item {
+            PhotographyCard("1", "Spend 15 min")
+            Spacer(Modifier.size(8.dp))
+        }
+        item {
+            PhotographyCard("1", "Spend 15 min")
+            Spacer(Modifier.size(8.dp))
+        }
+        item {
+            PhotographyCard("1", "Spend 15 min")
+            Spacer(Modifier.size(8.dp))
+        }
+        item {
+            PhotographyCard("1", "Spend 15 min")
+            Spacer(Modifier.size(8.dp))
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ThirtyDaysTheme {
-        Greeting("Android")
     }
 }
