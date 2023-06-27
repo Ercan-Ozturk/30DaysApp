@@ -1,5 +1,7 @@
 package com.example.thirtydays.ui.theme
 
+
+
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
@@ -72,13 +74,10 @@ private val DarkColors = darkColorScheme(
     scrim = md_theme_dark_scrim,
 )
 
-
 @Composable
 fun ThirtyDaysTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    content: @Composable() () -> Unit
 ) {
     val colors = if (!useDarkTheme) {
         LightColors
